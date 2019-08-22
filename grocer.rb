@@ -48,5 +48,43 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  # code here
+  consCart = {}
+  cart.map { |groc|
+    grocItem = groc.keys[0]
+    if consCart[grocItem]
+      consCart[grocItem][:count] += 1
+    else
+      consCart[grocItem] = groc[grocItem]
+      consCart[grocItem][:count] = 1
+    end
+  }
+
+  count = 0
+  while coupons[count] do
+    if consCart[coupons[count][:item]]
+      consCart[coupons[count][:item]][:count] -= coupons[count][:num]
+      coupItem = "#{coupons[count][:item]} W/COUPON"
+      coupPrice = coupons[count][:cost] / coupons[count][:num]
+      if consCart[coupItem]
+        coupCount = consCart[coupItem][:count] + coupons[count][:num]
+      else
+        coupCount = coupons[count][:num]
+      end
+      consCart[coupItem] = {:price => coupPrice, :clearance => consCart[coupons[count][:item]][:clearance], :count => coupCount}
+      count += 1
+    else
+      count += 1
+    end
+  end
+
+  count = 0
+  while consCart.keys[count]
+    item = consCart.keys[count]
+    if consCart[item][:clearance]
+      consCart[item][:price] = (consCart[item][:price] * 0.8).round(2)
+      count += 1
+    else
+      count += 1
+    end
+  end
 end
