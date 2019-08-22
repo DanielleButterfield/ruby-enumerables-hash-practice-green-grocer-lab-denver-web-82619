@@ -87,7 +87,7 @@ def checkout(cart, coupons)
       count += 1
     end
   end
-  
+
   total = 0
   count = 0
   while consCart.keys[count]
