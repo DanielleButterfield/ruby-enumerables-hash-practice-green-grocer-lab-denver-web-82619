@@ -16,6 +16,7 @@ def apply_coupons(cart, coupons)
   count = 0
   while coupons[count] do
     if cart[coupons[count][:item]]
+      cart[coupons[count][:item]][:count] -= coupons[count][:num]
       coupItem = "#{coupons[count][:item]} W/COUPON"
       coupPrice = coupons[count][:cost] / coupons[count][:num]
       cart[coupItem] = {:price => coupPrice, :clearance => true, :count => coupons[count][:num]}
