@@ -53,7 +53,7 @@ def checkout(cart, coupons)
   coupCart = apply_coupons(consCart, coupons)
 
   clearCart = apply_clearance(coupCart)
-  
+
   total = 0
   count = 0
   while clearCart.keys[count]
