@@ -1,5 +1,5 @@
 def consolidate_cart(cart)
-  # code here
+  consCart = cart.reduce Hash.new, :merge
 end
 
 def apply_coupons(cart, coupons)
