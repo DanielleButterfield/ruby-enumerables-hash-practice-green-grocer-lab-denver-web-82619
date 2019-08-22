@@ -87,4 +87,5 @@ def checkout(cart, coupons)
       count += 1
     end
   end
+  consCart
 end
