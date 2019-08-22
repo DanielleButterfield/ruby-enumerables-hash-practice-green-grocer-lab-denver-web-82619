@@ -93,6 +93,7 @@ def checkout(cart, coupons)
   while consCart.keys[count]
     item = consCart.keys[count]
     total += consCart[item][:price]
+    count += 1
   end
   total
 end
