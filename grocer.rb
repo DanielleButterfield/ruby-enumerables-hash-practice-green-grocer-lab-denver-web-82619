@@ -72,3 +72,5 @@ def checkout(cart, coupons)
   end
   total
 end
+
+# May WAN have mercy on my soul...
