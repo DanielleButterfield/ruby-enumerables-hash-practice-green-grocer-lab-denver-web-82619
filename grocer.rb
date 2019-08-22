@@ -58,7 +58,7 @@ def checkout(cart, coupons)
   count = 0
   while clearCart.keys[count]
     item = clearCart.keys[count]
-    total += clearCart[item][:price]
+    total += clearCart[item][:price] * clearCart[item][:count]
     count += 1
   end
   puts total
